@@ -544,8 +544,14 @@
             window.cancelDeletePhoto();
         };
 
-        // Iniciar autenticación
-        initAuth();
+// Iniciar autenticación - versión simple
+photosCollectionRef = collection(db, "fotos_picun");
+console.log("Conectado a fotos_picun");
+// Cargar fotos existentes
+onSnapshot(photosCollectionRef, (snapshot) => {
+  const fotos = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+  console.log("Fotos cargadas:", fotos.length);
+});
     </script>
 
     <!-- SCRIPT DE INTERACCIÓN Y MENSAJES ALEATORIOS -->
