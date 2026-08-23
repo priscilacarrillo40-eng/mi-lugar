@@ -329,17 +329,16 @@
         import { getFirestore, collection, doc, addDoc, deleteDoc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Configuración e inicialización de Firebase con fallbacks seguros
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'mi-espacio-fotos-app';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' 
-            ? JSON.parse(__firebase_config) 
-            : {
-                apiKey: "AIzaSyDemoDummyKeyForAppOnly",
-                authDomain: "demo-app.firebaseapp.com",
-                projectId: "demo-app",
-                storageBucket: "demo-app.appspot.com",
-                messagingSenderId: "123456789",
-                appId: "1:123456789:web:abcdef123456"
-            };
+        const appId = 'mi-lugar-fc91';
+        const firebaseConfig = {
+  apiKey: "AIzaSyCrFH47Dx4AJ-JYwhudMV9WK92w6kPyb3c",
+  authDomain: "mi-lugar-fc91.firebaseapp.com",
+  projectId: "mi-lugar-fc91",
+  storageBucket: "mi-lugar-fc91.firebasestorage.app",
+  messagingSenderId: "623758080534",
+  appId: "1:623758080534:web:a41839fdb68e3197ea1337",
+  measurementId: "G-KJJ0Y5827F"
+};
 
         const app = initializeApp(firebaseConfig);
         const auth = getAuth(app);
