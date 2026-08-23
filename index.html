@@ -349,24 +349,16 @@
         let photosCollectionRef = null;
         let currentPhotoToDeleteId = null;
 
-        // Autenticación primero (Regla estricta #3)
-        async function initAuth() {
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                userId = auth.currentUser ? auth.currentUser.uid : 'usuario_local';
-                // Definir ruta privada válida (Regla estricta #1)
-                photosCollectionRef = collection(db, 'artifacts', appId, 'users', userId, 'photos');
-                
-                // Suscribirse a las fotos guardadas en Firestore
-                listenToPhotos();
-            } catch (error) {
-                console.error("Error al autenticar:", error);
-            }
-        }
+          // Fotos públicas - Sin login, para todo Picún
+  async function initAuth() {
+    try {
+      photosCollectionRef = collection(db, 'fotos_picun');
+      console.log("Conectado a fotos públicas");
+      listenToPhotos();
+    } catch (error) {
+      console.error("Error al conectar:", error);
+    }
+  }
 
         // Cargar fotos guardadas en tiempo real sin ordenar en Firestore (Regla estricta #2)
         function listenToPhotos() {
