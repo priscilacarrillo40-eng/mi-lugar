@@ -544,13 +544,23 @@
             window.cancelDeletePhoto();
         };
 
-// Iniciar autenticación - versión simple
+// version simple y definitiva
 photosCollectionRef = collection(db, "fotos_picun");
 console.log("Conectado a fotos_picun");
-// Cargar fotos existentes
+
 onSnapshot(photosCollectionRef, (snapshot) => {
   const fotos = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   console.log("Fotos cargadas:", fotos.length);
+  
+  const gallery = document.getElementById('photoGallery') || document.getElementById('gallery') || document.getElementById('photoGrid');
+  if (!gallery) return;
+  
+  gallery.innerHTML = fotos.map(foto => `
+    <div class="relative group">
+      <img src="${foto.dataUrl}" class="w-full h-64 object-cover rounded-xl" />
+      <button onclick="deletePhoto('${foto.id}')" class="absolute top-2 right-2 bg-red-500 text-white px-2 py-1 rounded">X</button>
+    </div>
+  `).join('');
 });
     </script>
 
