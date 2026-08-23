@@ -1,0 +1,698 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi Espacio Especial ♡</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        theme: {
+                            bg: '#F3EDE7',         /* Fondo elegante de tono neutro y cálido */
+                            card: '#E8DED4',       /* Tarjeta tono medio suave */
+                            cardDark: '#3A3235',   /* Tono compacto oscuro elegante */
+                            accent: '#B87D7B',     /* Rosa terracota / Muted rose */
+                            accentHover: '#9E6462',
+                            gold: '#D4AF37',       /* Dorado suave */
+                            textDark: '#2C2527',   /* Texto compacto legibilidad alta */
+                            textMuted: '#6E6366',
+                            tape: 'rgba(215, 195, 185, 0.65)'
+                        }
+                    },
+                    fontFamily: {
+                        serif: ['"Cormorant Garamond"', 'serif'],
+                        hand: ['Caveat', 'cursive'],
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Estilos visuales de cinta adhesiva y polaroid */
+        .tape {
+            background-color: rgba(232, 222, 212, 0.75);
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.08);
+            backdrop-filter: blur(2px);
+        }
+        .polaroid {
+            box-shadow: 0 10px 25px -5px rgba(58, 50, 53, 0.12), 0 8px 10px -6px rgba(58, 50, 53, 0.08);
+            transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .polaroid:hover {
+            transform: scale(1.03) translateY(-4px) rotate(0deg) !important;
+            z-index: 20;
+        }
+        .card-shadow {
+            box-shadow: 0 12px 30px -10px rgba(44, 37, 39, 0.12);
+        }
+        /* Animaciones para cambio de frases y modales */
+        @keyframes fadeInScale {
+            from { opacity: 0; transform: scale(0.95) translateY(8px); }
+            to { opacity: 1; transform: scale(1) translateY(0); }
+        }
+        .animate-pop {
+            animation: fadeInScale 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+        /* Ocultar barra de scroll para elementos lisos */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-theme-bg text-theme-textDark font-sans antialiased selection:bg-theme-accent selection:text-white min-h-screen flex flex-col">
+
+    <!-- Navegación Elegante -->
+    <nav class="fixed top-0 left-0 right-0 z-40 bg-theme-bg/85 backdrop-blur-md border-b border-theme-accent/20 transition-all">
+        <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#inicio" class="font-serif text-2xl font-semibold text-theme-textDark hover:text-theme-accent transition flex items-center gap-2">
+                Mi Espacio <span class="font-hand text-theme-accent text-3xl">♡</span>
+            </a>
+            
+            <div class="hidden md:flex space-x-8 font-medium text-sm text-theme-textMuted">
+                <a href="#inicio" class="hover:text-theme-accent transition-colors py-1 border-b-2 border-transparent hover:border-theme-accent">Inicio</a>
+                <a href="#tesoros" class="hover:text-theme-accent transition-colors py-1 border-b-2 border-transparent hover:border-theme-accent">Personas de Oro</a>
+                <a href="#anhelos" class="hover:text-theme-accent transition-colors py-1 border-b-2 border-transparent hover:border-theme-accent">Anhelos & Recuerdos</a>
+                <a href="#galeria" class="hover:text-theme-accent transition-colors py-1 border-b-2 border-transparent hover:border-theme-accent">Mis Fotos</a>
+            </div>
+
+            <!-- Botón menú móvil -->
+            <button id="mobileMenuBtn" class="md:hidden text-theme-textDark hover:text-theme-accent focus:outline-none text-xl p-2" aria-label="Menú">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Menú Móvil Desplegable -->
+        <div id="mobileMenu" class="hidden md:hidden bg-theme-bg/95 border-b border-theme-accent/20 px-6 py-4 flex flex-col space-y-3 font-medium text-theme-textDark">
+            <a href="#inicio" class="mobile-link hover:text-theme-accent">Inicio</a>
+            <a href="#tesoros" class="mobile-link hover:text-theme-accent">Personas de Oro</a>
+            <a href="#anhelos" class="mobile-link hover:text-theme-accent">Anhelos & Recuerdos</a>
+            <a href="#galeria" class="mobile-link hover:text-theme-accent">Mis Fotos</a>
+        </div>
+    </nav>
+
+    <!-- SECCIÓN HERO / INICIO -->
+    <section id="inicio" class="pt-32 pb-16 px-6 max-w-6xl mx-auto min-h-[85vh] flex flex-col justify-center">
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            <!-- Columna Texto -->
+            <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-theme-card border border-theme-accent/30 text-theme-accent text-xs font-semibold tracking-wide uppercase">
+                    <i class="fa-regular fa-heart text-xs"></i>
+                    <span>Un rincón de momentos y réflexión</span>
+                </div>
+                <h1 class="font-serif text-5xl sm:text-6xl text-theme-textDark leading-tight">
+                    Bienvenidos <br>a este rincón <span class="font-hand text-theme-accent text-6xl inline-block -rotate-6">♡</span>
+                </h1>
+                <p class="text-theme-textMuted text-lg max-w-lg mx-auto lg:mx-0 font-light leading-relaxed">
+                    Un espacio elegante creado para recordar el valor de las personas verdaderas, seguir lo que dicta el corazón y atesorar cada instante feliz.
+                </p>
+                <div class="pt-2 flex flex-wrap gap-4 justify-center lg:justify-start">
+                    <a href="#tesoros" class="px-7 py-3 bg-theme-accent hover:bg-theme-accentHover text-white font-medium text-sm rounded-full shadow-sm hover:shadow transition-all duration-300 flex items-center gap-2">
+                        <span>Personas que valen oro</span>
+                        <i class="fa-solid fa-arrow-down text-xs"></i>
+                    </a>
+                    <a href="#galeria" class="px-7 py-3 border border-theme-accent/40 text-theme-textDark hover:bg-theme-card font-medium text-sm rounded-full transition-all duration-300 flex items-center gap-2">
+                        <span>Ver mis fotos</span>
+                        <i class="fa-regular fa-image text-xs"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card Decorativa de Bienvenida -->
+            <div class="lg:col-span-5 relative flex justify-center">
+                <div class="polaroid bg-white p-6 rounded-xl border border-theme-accent/20 w-full max-w-sm relative transform -rotate-1 card-shadow">
+                    <div class="tape absolute -top-3 left-1/2 -translate-x-1/2 w-28 h-7 -rotate-1 rounded-sm"></div>
+                    <div class="w-10 h-10 rounded-full bg-theme-card flex items-center justify-center text-theme-accent mx-auto mb-4">
+                        <i class="fa-solid fa-gem text-lg"></i>
+                    </div>
+                    <p class="font-hand text-2xl text-center text-theme-textDark leading-snug mb-3">
+                        "Las fotografías guardan la luz de los días en que fuimos completamente felices."
+                    </p>
+                    <p class="text-xs text-center text-theme-textMuted font-mono">♡ Tu espacio personal ♡</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- APARTADO 1: MENSAJES SOBRE PERSONAS QUE VALEN ORO Y MOMENTOS DIFÍCILES -->
+    <section id="tesoros" class="py-20 px-6 bg-theme-cardDark text-white relative overflow-hidden">
+        <div class="max-w-4xl mx-auto text-center relative z-10">
+            
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 text-rose-200 text-xs font-semibold tracking-wider uppercase mb-4 border border-white/10">
+                <i class="fa-solid fa-crown text-theme-gold text-xs"></i>
+                <span>Apartado I • La riqueza de los vínculos</span>
+            </div>
+
+            <h2 class="font-serif text-4xl sm:text-5xl text-white mb-3">
+                Personas que valen oro <span class="font-hand text-theme-accent text-5xl">♡</span>
+            </h2>
+            <p class="text-gray-300 max-w-lg mx-auto font-light text-sm mb-10 leading-relaxed">
+                Mensajes que nos recuerdan a quienes están a nuestro lado cuando la tormenta aprieta y cuya presencia es un verdadero regalo.
+            </p>
+
+            <!-- Tarjeta Interactiva de Mensaje Aleatorio -->
+            <div class="bg border border-white/10 rounded-2xl p-8 sm:p-12 shadow-2xl relative max-w-2xl mx-auto backdrop-blur-sm bg-white/5">
+                <div class="text-theme-gold text-3xl mb-4 opacity-80">
+                    <i class="fa-solid fa-quote-left"></i>
+                </div>
+                
+                <div id="goldMessageDisplay" class="min-h-[140px] flex items-center justify-center font-serif text-2xl sm:text-3xl text-rose-100 font-light leading-snug animate-pop px-2">
+                    <!-- Se cargará mediante JavaScript -->
+                </div>
+
+                <div class="mt-8 pt-6 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4">
+                    <span class="text-xs font-mono text-gray-400 flex items-center gap-1.5">
+                        <i class="fa-regular fa-sparkles text-theme-gold"></i>
+                        <span>Mensaje al azar</span>
+                    </span>
+
+                    <button onclick="generateGoldMessage()" class="w-full sm:w-auto px-6 py-2.5 bg-theme-accent hover:bg-theme-accentHover text-white text-sm font-medium rounded-full shadow transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
+                        <i class="fa-solid fa-dice text-xs"></i>
+                        <span>Descubrir otro mensaje</span>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- APARTADO 2: MENSAJES DE VIVIR LA VIDA, ANHELOS DEL CORAZÓN, VIAJES Y FOTOS -->
+    <section id="anhelos" class="py-20 px-6 max-w-5xl mx-auto">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+            <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-theme-card border border-theme-accent/30 text-theme-accent text-xs font-semibold tracking-wider uppercase mb-3">
+                <i class="fa-solid fa-compass text-xs"></i>
+                <span>Apartado II • Vivir & Recordar</span>
+            </div>
+            <h2 class="font-serif text-4xl sm:text-5xl text-theme-textDark mb-3">
+                Anhelos, Viajes & Memorias <span class="font-hand text-theme-accent text-5xl">♡</span>
+            </h2>
+            <p class="text-theme-textMuted font-light text-sm">
+                Reflexiones para vivir sin buscar la perfección, seguir lo que late en tu interior, emprender viajes y capturar instantes en imágenes.
+            </p>
+        </div>
+
+        <!-- Tarjeta Dinámica de Reflexiones -->
+        <div class="bg-white rounded-2xl p-8 sm:p-12 border border-theme-accent/20 card-shadow relative max-w-3xl mx-auto">
+            <!-- Cinta decorativa -->
+            <div class="tape absolute -top-3 left-1/2 -translate-x-1/2 w-32 h-7 -rotate-1 rounded-sm"></div>
+
+            <div class="flex justify-center mb-6">
+                <span id="lifeCategoryBadge" class="px-3 py-1 bg-theme-card text-theme-accent text-xs font-semibold rounded-full uppercase tracking-wider">
+                    Anhelos del corazón
+                </span>
+            </div>
+
+            <div id="lifeMessageDisplay" class="min-h-[150px] flex items-center justify-center text-center font-hand text-3xl sm:text-4xl text-theme-textDark leading-relaxed animate-pop px-2">
+                <!-- Se cargará mediante JavaScript -->
+            </div>
+
+            <div class="mt-8 pt-6 border-t border-theme-card flex flex-col sm:flex-row items-center justify-between gap-4">
+                <div class="flex items-center gap-2 text-xs text-theme-textMuted">
+                    <i class="fa-regular fa-compass text-theme-accent"></i>
+                    <span>Toca el botón para cambiar de pensamiento</span>
+                </div>
+
+                <button onclick="generateLifeMessage()" class="w-full sm:w-auto px-6 py-2.5 bg-theme-cardDark hover:bg-black text-white text-sm font-medium rounded-full shadow transition-all duration-300 flex items-center justify-center gap-2 active:scale-95">
+                    <i class="fa-solid fa-arrows-rotate text-xs"></i>
+                    <span>Inspirarme de nuevo</span>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE FOTOS (GALERÍA PERSONALIZABLE Y PERSISTENTE) -->
+    <section id="galeria" class="py-20 px-6 bg-theme-card/50 border-t border-b border-theme-accent/20">
+        <div class="max-w-6xl mx-auto">
+            
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-theme-card text-theme-accent text-xs font-medium uppercase tracking-wider mb-2">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>Tu Galería Personal</span>
+                    </div>
+                    <h2 class="font-serif text-4xl sm:text-5xl text-theme-textDark">
+                        Mis Fotografías <span class="font-hand text-theme-accent text-5xl">♡</span>
+                    </h2>
+                    <p class="text-theme-textMuted font-light text-sm mt-1">
+                        Sube únicamente imágenes. Se guardarán automáticamente para cuando regreses a la página.
+                    </p>
+                </div>
+
+                <!-- Botón de subida de fotos (SOLO FOTOS) -->
+                <div class="flex items-center gap-3">
+                    <label for="photoUploadInput" class="cursor-pointer px-6 py-3 bg-theme-accent hover:bg-theme-accentHover text-white text-sm font-medium rounded-full shadow-md transition-all duration-300 flex items-center gap-2">
+                        <i class="fa-solid fa-cloud-arrow-up"></i>
+                        <span>Subir Foto</span>
+                    </label>
+                    <input type="file" id="photoUploadInput" accept="image/*" multiple class="hidden" onchange="handlePhotoUpload(event)">
+                </div>
+            </div>
+
+            <!-- Notificación de carga / guardado -->
+            <div id="uploadStatus" class="hidden mb-6 p-4 rounded-xl bg-theme-card border border-theme-accent/30 text-theme-textDark text-sm text-center flex items-center justify-center gap-3">
+                <i class="fa-solid fa-spinner fa-spin text-theme-accent"></i>
+                <span id="uploadStatusText">Guardando tu fotografía en la memoria...</span>
+            </div>
+
+            <!-- Grilla de Fotos -->
+            <div id="photoGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8 min-h-[220px]">
+                <!-- Estado vacío inicial (Se renderiza por JS si no hay fotos) -->
+            </div>
+
+        </div>
+    </section>
+
+    <!-- FOOTER / CIERRE -->
+    <footer class="mt-auto py-12 bg-theme-cardDark text-white text-center px-6">
+        <div class="max-w-xl mx-auto space-y-4">
+            <h3 class="font-serif text-3xl">
+                Un rincón para sentir y atesorar <span class="font-hand text-theme-accent text-3xl">♡</span>
+            </h3>
+            <p class="text-xs text-gray-400 font-light">
+                Diseñado para ser simple, elegante y perdurable.
+            </p>
+            <p class="text-xs text-gray-500 font-mono pt-4 border-t border-white/10">
+                © <span id="year"></span> Mi Espacio Personal
+            </p>
+        </div>
+    </footer>
+
+    <!-- MODAL PARA VER FOTO EXPANDIDA -->
+    <div id="photoLightboxModal" class="fixed inset-0 bg-black/85 backdrop-blur-md z-50 hidden items-center justify-center p-4" onclick="closePhotoLightbox()">
+        <div class="max-w-4xl w-full text-center relative" onclick="event.stopPropagation()">
+            <button onclick="closePhotoLightbox()" class="absolute -top-12 right-0 text-white text-2xl hover:text-theme-accent transition p-2" aria-label="Cerrar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <img id="lightboxImg" src="" alt="Foto expandida" class="max-h-[80vh] w-auto mx-auto rounded-lg shadow-2xl object-contain">
+            <p id="lightboxCaption" class="text-white/80 font-hand text-2xl mt-4"></p>
+        </div>
+    </div>
+
+    <!-- MODAL CONFIRMACIÓN PARA BORRAR FOTO (SIN usar alert/confirm) -->
+    <div id="deleteConfirmModal" class="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 hidden items-center justify-center p-4">
+        <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-2xl text-center border border-theme-accent/20">
+            <div class="w-12 h-12 rounded-full bg-rose-100 text-rose-500 flex items-center justify-center mx-auto mb-4 text-xl">
+                <i class="fa-solid fa-trash-can"></i>
+            </div>
+            <h3 class="font-serif text-2xl text-theme-textDark mb-2">¿Eliminar fotografía?</h3>
+            <p class="text-xs text-theme-textMuted mb-6 leading-relaxed">
+                Esta acción eliminará la foto de tu galería de forma permanente.
+            </p>
+            <div class="flex gap-3">
+                <button onclick="cancelDeletePhoto()" class="w-1/2 py-2.5 bg-gray-100 hover:bg-gray-200 text-theme-textDark font-medium text-xs rounded-xl transition">
+                    Cancelar
+                </button>
+                <button onclick="confirmDeletePhoto()" class="w-1/2 py-2.5 bg-rose-500 hover:bg-rose-600 text-white font-medium text-xs rounded-xl shadow transition">
+                    Sí, eliminar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- FIREBASE & SCRIPT DE FUNCIONALIDAD -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, doc, addDoc, deleteDoc, onSnapshot, query } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Configuración e inicialización de Firebase con fallbacks seguros
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'mi-espacio-fotos-app';
+        const firebaseConfig = typeof __firebase_config !== 'undefined' 
+            ? JSON.parse(__firebase_config) 
+            : {
+                apiKey: "AIzaSyDemoDummyKeyForAppOnly",
+                authDomain: "demo-app.firebaseapp.com",
+                projectId: "demo-app",
+                storageBucket: "demo-app.appspot.com",
+                messagingSenderId: "123456789",
+                appId: "1:123456789:web:abcdef123456"
+            };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        let userId = null;
+        let photosCollectionRef = null;
+        let currentPhotoToDeleteId = null;
+
+        // Autenticación primero (Regla estricta #3)
+        async function initAuth() {
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                userId = auth.currentUser ? auth.currentUser.uid : 'usuario_local';
+                // Definir ruta privada válida (Regla estricta #1)
+                photosCollectionRef = collection(db, 'artifacts', appId, 'users', userId, 'photos');
+                
+                // Suscribirse a las fotos guardadas en Firestore
+                listenToPhotos();
+            } catch (error) {
+                console.error("Error al autenticar:", error);
+            }
+        }
+
+        // Cargar fotos guardadas en tiempo real sin ordenar en Firestore (Regla estricta #2)
+        function listenToPhotos() {
+            if (!photosCollectionRef) return;
+
+            onSnapshot(photosCollectionRef, (snapshot) => {
+                const photos = [];
+                snapshot.forEach(doc => {
+                    photos.push({ id: doc.id, ...doc.data() });
+                });
+
+                // Ordenar en memoria en JS por fecha
+                photos.sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+
+                renderPhotoGrid(photos);
+            }, (error) => {
+                console.error("Error al obtener fotografías:", error);
+            });
+        }
+
+        // Renderizar cuadrícula de fotos (Empieza vacía si no hay subidas)
+        function renderPhotoGrid(photos) {
+            const grid = document.getElementById('photoGrid');
+            if (!grid) return;
+
+            if (photos.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full py-16 text-center bg-white/60 rounded-2xl border-2 border-dashed border-theme-accent/30 p-8">
+                        <div class="w-16 h-16 rounded-full bg-theme-card text-theme-accent flex items-center justify-center mx-auto mb-4 text-2xl">
+                            <i class="fa-regular fa-images"></i>
+                        </div>
+                        <h3 class="font-serif text-2xl text-theme-textDark mb-1">Tu galería está lista y vacía</h3>
+                        <p class="text-xs text-theme-textMuted max-w-sm mx-auto mb-6">
+                            Esta sección está vacía para que puedas subir tus fotos especiales. Se guardarán de forma segura.
+                        </p>
+                        <label for="photoUploadInput" class="cursor-pointer inline-flex items-center gap-2 px-5 py-2.5 bg-theme-accent hover:bg-theme-accentHover text-white text-xs font-medium rounded-full shadow transition">
+                            <i class="fa-solid fa-plus"></i>
+                            <span>Añadir tu primera foto</span>
+                        </label>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = photos.map((photo, index) => {
+                const rotation = (index % 3 === 0) ? '-rotate-1' : (index % 2 === 0) ? 'rotate-2' : '-rotate-2';
+                return `
+                    <div class="polaroid bg-white p-4 rounded-lg border border-theme-accent/20 relative group transition-all duration-300 ${rotation}">
+                        <div class="tape absolute -top-3 left-1/2 -translate-x-1/2 w-20 h-6 -rotate-1"></div>
+                        
+                        <!-- Imagen -->
+                        <div class="aspect-square overflow-hidden rounded bg-gray-100 cursor-pointer relative" onclick="window.openLightbox('${photo.dataUrl}', '${photo.name || 'Fotografía feliz'}')">
+                            <img src="${photo.dataUrl}" alt="${photo.name || 'Foto'}" class="w-full h-full object-cover group-hover:scale-105 transition duration-500">
+                            <div class="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition duration-300 flex items-center justify-center">
+                                <span class="text-xs text-white bg-black/50 px-3 py-1 rounded-full backdrop-blur-sm">Ver en grande</span>
+                            </div>
+                        </div>
+
+                        <!-- Pie de foto & Botón Borrar explícito -->
+                        <div class="mt-3 flex items-center justify-between px-1">
+                            <span class="font-hand text-xl text-theme-textDark truncate max-w-[180px]">
+                                ${photo.name || 'Momento especial'}
+                            </span>
+                            
+                            <!-- Opción de BORRAR EXPLÍCITA -->
+                            <button onclick="window.askDeletePhoto('${photo.id}')" title="Borrar fotografía" class="text-gray-400 hover:text-rose-500 p-1.5 rounded-full hover:bg-rose-50 transition">
+                                <i class="fa-regular fa-trash-can text-sm"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Subida y compresión de fotos (SOLO FOTOS)
+        window.handlePhotoUpload = async function(event) {
+            const files = event.target.files;
+            if (!files || files.length === 0) return;
+
+            const statusBox = document.getElementById('uploadStatus');
+            const statusText = document.getElementById('uploadStatusText');
+            statusBox.classList.remove('hidden');
+
+            for (let i = 0; i < files.length; i++) {
+                const file = files[i];
+
+                // Validación estricta: SOLO imágenes
+                if (!file.type.startsWith('image/')) {
+                    statusText.textContent = `El archivo ${file.name} no es una imagen válida. Solo se admiten fotos.`;
+                    setTimeout(() => statusBox.classList.add('hidden'), 3000);
+                    continue;
+                }
+
+                statusText.textContent = `Procesando y optimizando "${file.name}"...`;
+
+                try {
+                    const compressedBase64 = await compressImage(file);
+                    
+                    if (photosCollectionRef) {
+                        statusText.textContent = `Guardando "${file.name}" en tu espacio...`;
+                        await addDoc(photosCollectionRef, {
+                            dataUrl: compressedBase64,
+                            name: file.name.split('.')[0] || 'Foto feliz',
+                            createdAt: Date.now()
+                        });
+                    }
+                } catch (err) {
+                    console.error("Error al procesar la foto:", err);
+                    statusText.textContent = "Ocurrió un error al guardar la imagen.";
+                }
+            }
+
+            statusText.textContent = "¡Fotos guardadas con éxito!";
+            setTimeout(() => {
+                statusBox.classList.add('hidden');
+            }, 2000);
+
+            // Limpiar input
+            event.target.value = '';
+        };
+
+        // Función de compresión de imagen en Canvas
+        function compressImage(file) {
+            return new Promise((resolve, reject) => {
+                const reader = new FileReader();
+                reader.readAsDataURL(file);
+                reader.onload = (e) => {
+                    const img = new Image();
+                    img.src = e.target.result;
+                    img.onload = () => {
+                        const canvas = document.createElement('canvas');
+                        let width = img.width;
+                        let height = img.height;
+                        const maxDimension = 1000;
+
+                        if (width > maxDimension || height > maxDimension) {
+                            if (width > height) {
+                                height = Math.round((height * maxDimension) / width);
+                                width = maxDimension;
+                            } else {
+                                width = Math.round((width * maxDimension) / height);
+                                height = maxDimension;
+                            }
+                        }
+
+                        canvas.width = width;
+                        canvas.height = height;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, width, height);
+
+                        // Exportar a JPEG comprimido
+                        resolve(canvas.toDataURL('image/jpeg', 0.8));
+                    };
+                    img.onerror = (err) => reject(err);
+                };
+                reader.onerror = (err) => reject(err);
+            });
+        }
+
+        // Lógica para borrar foto únicamente al presionar la opción de borrar
+        window.askDeletePhoto = function(photoId) {
+            currentPhotoToDeleteId = photoId;
+            const modal = document.getElementById('deleteConfirmModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        };
+
+        window.cancelDeletePhoto = function() {
+            currentPhotoToDeleteId = null;
+            const modal = document.getElementById('deleteConfirmModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        };
+
+        window.confirmDeletePhoto = async function() {
+            if (currentPhotoToDeleteId && photosCollectionRef) {
+                try {
+                    const docRef = doc(photosCollectionRef.firestore, photosCollectionRef.path, currentPhotoToDeleteId);
+                    await deleteDoc(docRef);
+                } catch (e) {
+                    console.error("Error eliminando foto:", e);
+                }
+            }
+            window.cancelDeletePhoto();
+        };
+
+        // Iniciar autenticación
+        initAuth();
+    </script>
+
+    <!-- SCRIPT DE INTERACCIÓN Y MENSAJES ALEATORIOS -->
+    <script>
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Menu movil
+        const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        mobileMenuBtn.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
+        document.querySelectorAll('.mobile-link').forEach(link => {
+            link.addEventListener('click', () => mobileMenu.classList.add('hidden'));
+        });
+
+        /* ===================================================
+           APARTADO 1: MENSAJES DE PERSONAS QUE VALEN ORO
+           =================================================== */
+        const goldMessages = [
+            "Hay personas que no necesitan hablar mucho para iluminar tu día; su sola presencia vale más que todo el oro del mundo. ♡",
+            "La verdadera riqueza no se mide en lo que posees, sino en las personas que permanecen intactas a tu lado en los momentos más difíciles.",
+            "Conocerás a muchas personas en los días soleados, pero solo las de corazón genuino se quedarán a sostener tu paraguas bajo la tormenta.",
+            "Las personas de oro no se encuentran en cualquier parte; son aquellas que celebran tus logros sincera e incondicionalmente.",
+            "Agradece por quienes te vieron en tu momento más frágil y decidieron abrazarte en lugar de juzgarte. Esas almas valen la pena.",
+            "En medio de la prueba es donde descubres quiénes son los amigos de verdad y quiénes solo compartían tu mesa en la abundancia.",
+            "Guarda como un tesoro a las personas que te recuerdan quién eres cuando a ti se te ha olvidado por completo.",
+            "Hay abrazos que reordenan todo por dentro y personas cuya lealtad es un refugio inquebrantable."
+        ];
+
+        let currentGoldIndex = -1;
+
+        function generateGoldMessage() {
+            const display = document.getElementById('goldMessageDisplay');
+            let nextIndex;
+            do {
+                nextIndex = Math.floor(Math.random() * goldMessages.length);
+            } while (nextIndex === currentGoldIndex && goldMessages.length > 1);
+
+            currentGoldIndex = nextIndex;
+
+            display.classList.remove('animate-pop');
+            void display.offsetWidth; // Trigger reflow
+            display.textContent = `"${goldMessages[currentGoldIndex]}"`;
+            display.classList.add('animate-pop');
+        }
+
+        /* ===================================================
+           APARTADO 2: MENSAJES DE VIVIR LA VIDA, ANHELOS, VIAJES Y FOTOS
+           =================================================== */
+        const lifeMessages = [
+            {
+                badge: "Anhelos & Corazón",
+                text: "No vivas para complacer expectativas ajenas. Sigue siempre los anhelos de tu corazón, porque al final del camino solo tú habrás recorrido tu vida."
+            },
+            {
+                badge: "Vivir sin Perfección",
+                text: "La vida no se trata de ser perfecto, sino de ser real. Permítete equivocarte, reír sin pausa y disfrutar del viaje con todas sus imperfecciones."
+            },
+            {
+                badge: "El Arte de Viajar",
+                text: "Viaja acompañado para multiplicar la alegría, o viaja solo para reencontrarte contigo mismo. Lo importante es no dejar caminos sin explorar."
+            },
+            {
+                badge: "Las Fotos & Recuerdos",
+                text: "Las fotografías son pequeñas ventanas al pasado: la forma en que el tiempo nos permite guardar para siempre un momento en el que fuimos profundamente felices."
+            },
+            {
+                badge: "Tu propio camino",
+                text: "Escucha los consejos, pero toma tus propias decisiones. La paz mental de seguir tu intuición no tiene precio."
+            },
+            {
+                badge: "Fotografiar la vida",
+                text: "A veces una foto no capta la belleza del paisaje, sino el sentimiento exacto de libertad que tenías al tomarla."
+            },
+            {
+                badge: "Viajes e Historias",
+                text: "Las mejores historias no están guardadas en libros, sino en las millas recorridas y en los atardeceres contemplados desde lugares nuevos."
+            }
+        ];
+
+        let currentLifeIndex = -1;
+
+        function generateLifeMessage() {
+            const display = document.getElementById('lifeMessageDisplay');
+            const badge = document.getElementById('lifeCategoryBadge');
+            
+            let nextIndex;
+            do {
+                nextIndex = Math.floor(Math.random() * lifeMessages.length);
+            } while (nextIndex === currentLifeIndex && lifeMessages.length > 1);
+
+            currentLifeIndex = nextIndex;
+            const item = lifeMessages[currentLifeIndex];
+
+            display.classList.remove('animate-pop');
+            void display.offsetWidth; // Trigger reflow
+
+            badge.textContent = item.badge;
+            display.textContent = `"${item.text}"`;
+            display.classList.add('animate-pop');
+        }
+
+        // Cargar mensajes iniciales al abrir
+        window.onload = function() {
+            generateGoldMessage();
+            generateLifeMessage();
+        };
+
+        /* Lightbox para fotos */
+        window.openLightbox = function(src, caption) {
+            document.getElementById('lightboxImg').src = src;
+            document.getElementById('lightboxCaption').textContent = caption || '';
+            const modal = document.getElementById('photoLightboxModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        };
+
+        window.closePhotoLightbox = function() {
+            const modal = document.getElementById('photoLightboxModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        };
+    </script>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mi lugar</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 50px; background: #f0f8ff; }
+    h1 { color: #2a6496; }
+  </style>
+</head>
+<body>
+  <h1>Bienvenidos a mi lugar: Picún Leufú</h1>
+  <p>Esta es mi página y ¡ya funciona!</p>
+</body>
+</html>
+
